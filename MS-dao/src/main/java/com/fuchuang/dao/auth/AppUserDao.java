@@ -14,7 +14,7 @@ public interface AppUserDao {
      * @param id
      * @return
      */
-    @Select("select * from appuser where id=#{id}")
+    @Select("select * from appuser where userId=#{id}")
     AppUser findUserbyId(String id);
 
     /**
@@ -22,7 +22,7 @@ public interface AppUserDao {
      * @param id
      * @return
      */
-    @Select("delete from appuser where id=#{id}")
+    @Select("delete from appuser where userId=#{id}")
     boolean delUserbyId(String id);
 
     /**
