@@ -1,8 +1,8 @@
-package com.fuchuang.auth;
+package com.fuchuang.domain.auth;
 
 import java.io.Serializable;
 
-public class App_User implements Serializable {
+public class AppUser implements Serializable {
     private static final long serialVersionUID = -218685418260417504L;
 
     private String userId;

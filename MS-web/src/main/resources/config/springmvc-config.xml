@@ -18,7 +18,7 @@
     <mvc:annotation-driven/>
 
     <!--扫描包下的controller注解，对类进行自动装配-->
-    <context:component-scan base-package="com.wpx">
+    <context:component-scan base-package="com.fuchuang">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

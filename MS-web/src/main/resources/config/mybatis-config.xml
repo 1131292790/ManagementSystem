@@ -6,12 +6,12 @@
 
     <!--类型别名-->
     <typeAliases>
-        <package name="com.wpx.domain"/>
+        <package name="com.fuchuang.dao"/>
     </typeAliases>
 
     <!--映射器扫描，定位sql语句-->
     <mappers>
-        <package name="com.wpx.dao"/>
+        <package name="com.fuchuang.dao"/>
     </mappers>
 
 </configuration>

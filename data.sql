@@ -16,11 +16,11 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`own_app` /*!40100 DEFAULT CHARACTER SET
 
 USE `own_app`;
 
-/*Table structure for table `adminisistrator` */
+/*Table structure for table `admin` */
 
-DROP TABLE IF EXISTS `adminisistrator`;
+DROP TABLE IF EXISTS `admin`;
 
-CREATE TABLE `adminisistrator` (
+CREATE TABLE `admin` (
   `adminId` varchar(20) NOT NULL COMMENT '超级管理员id，主键',
   `passWord` varchar(20) DEFAULT NULL COMMENT '密码',
   `realName` varchar(20) DEFAULT NULL COMMENT '真实姓名',
@@ -28,13 +28,13 @@ CREATE TABLE `adminisistrator` (
   PRIMARY KEY (`adminId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `adminisistrator` */
+/*Data for the table `admin` */
 
-/*Table structure for table `app_user` */
+/*Table structure for table `appuser` */
 
-DROP TABLE IF EXISTS `app_user`;
+DROP TABLE IF EXISTS `appuser`;
 
-CREATE TABLE `app_user` (
+CREATE TABLE `appuser` (
   `userId` varchar(15) NOT NULL COMMENT '用户id',
   `nickName` varchar(15) DEFAULT NULL COMMENT '用户昵称',
   `phoneNum` varchar(15) DEFAULT NULL COMMENT '用户手机号',
@@ -45,9 +45,9 @@ CREATE TABLE `app_user` (
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `app_user` */
+/*Data for the table `appuser` */
 
-insert  into `app_user`(`userId`,`nickName`,`phoneNum`,`imgUrl`,`cityName`,`passWord`,`carbonCoin`) values 
+insert  into `appuser`(`userId`,`nickName`,`phoneNum`,`imgUrl`,`cityName`,`passWord`,`carbonCoin`) values 
 ('1','wpx','1121212',NULL,'meishan','12345',100),
 ('2','lpf','352e523',NULL,'fuqing','11111',99);
 
@@ -74,7 +74,7 @@ CREATE TABLE `item` (
   `itemId` varchar(20) NOT NULL COMMENT '商品id',
   `itemPrice` int(11) DEFAULT NULL COMMENT '商品价格',
   `itemType` varchar(20) DEFAULT NULL COMMENT '商品分类',
-  `itemDescription` varchar(35) DEFAULT NULL COMMENT '商品描述',
+  `itemDesc` varchar(35) DEFAULT NULL COMMENT '商品描述',
   `inventory` int(11) DEFAULT NULL COMMENT '库存量',
   `itemName` varchar(20) DEFAULT NULL COMMENT '商品名称',
   PRIMARY KEY (`itemId`)
@@ -82,7 +82,7 @@ CREATE TABLE `item` (
 
 /*Data for the table `item` */
 
-insert  into `item`(`itemId`,`itemPrice`,`itemType`,`itemDescription`,`inventory`,`itemName`) values 
+insert  into `item`(`itemId`,`itemPrice`,`itemType`,`itemDesc`,`inventory`,`itemName`) values 
 ('1',20,'1','手机',3,'mate30'),
 ('2',30,'2','衣服',2,'nike AF');
 
@@ -127,7 +127,7 @@ CREATE TABLE `order` (
   PRIMARY KEY (`orderId`),
   KEY `itemId` (`itemId`),
   KEY `userId` (`userId`),
-  CONSTRAINT `order_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `app_user` (`userId`) ON UPDATE CASCADE,
+  CONSTRAINT `order_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `appuser` (`userId`) ON UPDATE CASCADE,
   CONSTRAINT `order_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `item` (`itemId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

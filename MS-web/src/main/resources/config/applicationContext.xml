@@ -15,7 +15,6 @@
            http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
     <!--导入shiro配置文件-->
-    <import resource="classpath:config/spring-shiro-web.xml"/>
 
     <!--引入jdbc配置文件-->
     <context:property-placeholder location="classpath:config/jdbc.properties"/>
@@ -57,7 +56,7 @@
     
     <!--扫描包，将dao注入到spring-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="mapperScannerConfigurer">
-        <property name="basePackage" value="com.wpx.dao"/>
+        <property name="basePackage" value="com.fuchuang.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 </beans>

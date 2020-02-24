@@ -1,4 +1,4 @@
-package com.fuchuang.auth;
+package com.fuchuang.domain.auth;
 
 import java.io.Serializable;
 
