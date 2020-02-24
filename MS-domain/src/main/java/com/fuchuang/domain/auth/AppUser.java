@@ -7,9 +7,9 @@ public class AppUser implements Serializable {
 
     private String userId;
     private String nickName;
-    private String phone;
-    private String image;
-    private String city;
+    private String phoneNum;
+    private String imgUrl;
+    private String cityName;
     private String passWord;
     private String carbonCoin;
 
@@ -29,30 +29,6 @@ public class AppUser implements Serializable {
         this.nickName = nickName;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getPassWord() {
         return passWord;
     }
@@ -69,14 +45,42 @@ public class AppUser implements Serializable {
         this.carbonCoin = carbonCoin;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
     @Override
     public String toString() {
-        return "App_User{" +
+        return "AppUser{" +
                 "userId='" + userId + '\'' +
                 ", nickName='" + nickName + '\'' +
-                ", phone='" + phone + '\'' +
-                ", image='" + image + '\'' +
-                ", city='" + city + '\'' +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", cityName='" + cityName + '\'' +
                 ", passWord='" + passWord + '\'' +
                 ", carbonCoin='" + carbonCoin + '\'' +
                 '}';

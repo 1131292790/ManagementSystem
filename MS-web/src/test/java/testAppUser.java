@@ -14,7 +14,7 @@ public class testAppUser {
 
     @Test
     public void testfindUserbyId(){
-        AppUser app = appUserService.findUserbyId("1");
+        AppUser app = appUserService.getUserbyId("1");
         System.out.println(app);
     }
 }

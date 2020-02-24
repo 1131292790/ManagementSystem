@@ -1,9 +1,7 @@
 package com.fuchuang.dao.auth;
 
 import com.fuchuang.domain.auth.AppUser;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -18,11 +16,20 @@ public interface AppUserDao {
     AppUser findUserbyId(String id);
 
     /**
+     * 根据账号密码查询
+     * @param id
+     * @param pwd
+     * @return
+     */
+    @Select("select * from appuser where userId=#{userId} and passWord=#{passWord}")
+    AppUser findUserbyIdPwd(@Param("userId") String id,@Param("passWord") String pwd);
+
+    /**
      * 删除用户
      * @param id
      * @return
      */
-    @Select("delete from appuser where userId=#{id}")
+    @Delete("delete from appuser where userId=#{id}")
     boolean delUserbyId(String id);
 
     /**

@@ -12,28 +12,31 @@ public class AppUserServiceImpl implements AppUserService {
     @Autowired
     private AppUserDao appUserDao;
 
+
     @Override
-    public AppUser findUserbyId(String id) {
-        return appUserDao.findUserbyId(id);
+    public AppUser getUserbyId(String userId) {
+        return appUserDao.findUserbyId(userId);
     }
 
     @Override
-    public boolean delUserbyId(String  id) {
-        return appUserDao.delUserbyId(id);
+    public AppUser getUserbyIdPwd(String id, String pwd) {
+        return appUserDao.findUserbyIdPwd(id,pwd);
     }
 
     @Override
-    public boolean addUser(AppUser user) {
+    public boolean createUser(AppUser user) {
         return appUserDao.addUser(user);
     }
 
     @Override
-    public boolean updateUserInfo(AppUser user) {
-        return appUserDao.updateUserInfo(user);
+    public boolean delUser(String userId) {
+        return appUserDao.delUserbyId(userId);
     }
 
     @Override
-    public boolean changePasswordById(String userId) {
-        return appUserDao.changePasswordById(userId);
+    public boolean modInfobyUser(AppUser user) {
+        return appUserDao.updateUserInfo(user);
     }
+
+
 }

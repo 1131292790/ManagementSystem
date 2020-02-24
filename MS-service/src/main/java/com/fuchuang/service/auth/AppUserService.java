@@ -1,43 +1,46 @@
 package com.fuchuang.service.auth;
 
 import com.fuchuang.domain.auth.AppUser;
+import org.apache.ibatis.annotations.Param;
 
 public interface AppUserService {
 
     /**
-     * 查询用户
-     * @param id
+     * 查询用户信息
+     * @param userId 用户email/账号
      * @return
      */
-    AppUser findUserbyId(String id);
+    AppUser getUserbyId(String userId);
 
     /**
-     * 删除用户
+     * 登录验证
      * @param id
+     * @param pwd
      * @return
      */
-    boolean delUserbyId(String  id);
 
+    AppUser getUserbyIdPwd(String id,String pwd);
     /**
-     * 新增用户
+     * 创建用户
      * @param user
      * @return
      */
-    boolean addUser(AppUser user);
+    boolean createUser(AppUser user);
 
     /**
-     * 修改用户个人信息
-     * @param user
-     * @return
-     */
-    boolean updateUserInfo(AppUser user);
-
-    /**
-     * 更改密码
+     * 删除账号
      * @param userId
      * @return
      */
-    boolean changePasswordById(String userId);
+    boolean delUser(String userId);
+
+    /**
+     * 用户修改个人信息
+     * @param user
+     * @return
+     */
+    boolean modInfobyUser(AppUser user);
+
 
 
 }
