@@ -14,8 +14,4 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("u_info")
 public class AppUserController {
 
-    @Autowired
-    private AppUserService appUserService;
-
-
 }

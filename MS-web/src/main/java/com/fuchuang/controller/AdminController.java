@@ -4,10 +4,11 @@ import com.fuchuang.domain.auth.Admin;
 import com.fuchuang.service.auth.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
@@ -18,18 +19,45 @@ public class AdminController {
     private AdminService adminServiceImpl;
 
     /**
-     *
-     * @param username 表单参数,管理员账户
-     * @param password 表单请求参数
+     * 登录验证
      * @return
      */
-    public String adminLogin(Model model, String username, String password){
-
-        Admin admin = adminServiceImpl.getAdminbyIdPwd(username, password);
+    @RequestMapping(value = "/adminlogin",method = RequestMethod.POST)
+    public String adminLogin(String username,String password, HttpServletRequest request){
+        Admin admin = adminServiceImpl.getAdminbyIdPwd(username,password);
         if(admin!=null){
-            model.addAttribute("admin_info",admin);
-            return "admin_home";
+            request.getSession().setAttribute("admin",admin);
+            return "redirect:/admin/admin_home.jsp";
         }
-        return "redirect:index.html";
+        return null;
     }
+
+    /**
+     * 退出登录
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/adminlogout",method = RequestMethod.GET)
+    public String adminLogout(HttpServletRequest request){
+        request.getSession().removeAttribute("admin");
+        return "redirect:login.jsp";
+    }
+
+
+    /**
+     * 修改密码
+     * @param request
+     * @param newpass
+     * @return
+     */
+    @RequestMapping("/changepass")
+    @ResponseBody
+    public String changePassword(HttpServletRequest request,@RequestParam(value = "newpass",required = true) String newpass){
+        Admin admin =(Admin) request.getSession().getAttribute("admin");
+        if(!newpass.equals(admin.getPassWord())){
+            return "sucess";
+        }
+        return "fail";
+    }
+
 }

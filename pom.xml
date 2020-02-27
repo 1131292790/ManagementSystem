@@ -20,7 +20,7 @@
         <aspectj.version>1.9.4</aspectj.version>
         <slf4j.version>1.7.28</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
-        <druid.version>1.1.21</druid.version>
+        <druid.version>1.1.10</druid.version>
         <mybatis.version>3.5.4</mybatis.version>
         <mybatis.spring.version>2.0.3</mybatis.spring.version>
         <mysql.connector.version>5.1.42</mysql.connector.version>
@@ -52,6 +52,11 @@
         <artifactId>spring-webmvc</artifactId>
         <version>${spring.version}</version>
     </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-web</artifactId>
@@ -81,13 +86,6 @@
         <artifactId>spring-tx</artifactId>
         <version>${spring.version}</version>
     </dependency>
-    <!-- ORM 框架 -->
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-orm</artifactId>
-        <version>${spring.version}</version>
-    </dependency>
-
     <!-- 加入spring测试依赖包 -->
     <dependency>
         <groupId>org.springframework</groupId>
@@ -134,19 +132,12 @@
         <artifactId>slf4j-api</artifactId>
         <version>${slf4j.version}</version>
     </dependency>
+        <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+        </dependency>
 
-
-    <!-- aspectj -->
-    <dependency>
-        <groupId>org.aspectj</groupId>
-        <artifactId>aspectjweaver</artifactId>
-        <version>${aspectj.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.aspectj</groupId>
-        <artifactId>aspectjrt</artifactId>
-        <version>${aspectj.version}</version>
-    </dependency>
         <!--shiro集成-->
         <dependency>
             <groupId>org.apache.shiro</groupId>
@@ -178,6 +169,42 @@
             <version>1.2.2</version>
         </dependency>
 
+            <!--jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+
+
     </dependencies>
+
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.9</source>
+                        <target>1.9</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>

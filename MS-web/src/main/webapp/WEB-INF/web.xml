@@ -1,13 +1,16 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-<web-app>
-  <!--加载其他配置文件-->
+<!--加载其他配置文件-->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:config/applicationContext.xml</param-value>
   </context-param>
+
   <context-param>
     <param-name>log4jConfigLocation</param-name>
     <param-value>classpath:log4j.properties</param-value>
@@ -16,6 +19,7 @@
     <param-name>log4jRefreshInterval</param-name>
     <param-value>6000</param-value>
   </context-param>
+
 <!--  解决中文乱码 配置SpringMVC的编码格式-->
   <filter>
     <filter-name>encodingFilter</filter-name>
@@ -29,6 +33,8 @@
       <param-value>true</param-value>
     </init-param>
   </filter>
+
+
   <filter-mapping>
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
@@ -38,7 +44,8 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
-<!--前端控制器配置-->
+
+  <!--前端控制器配置-->
   <servlet>
     <servlet-name>spring-servlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -53,6 +60,5 @@
     <servlet-name>spring-servlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
 
 </web-app>

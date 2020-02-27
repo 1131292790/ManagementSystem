@@ -1,7 +1,6 @@
 package com.fuchuang.service.auth;
 
 import com.fuchuang.domain.auth.AppUser;
-import org.apache.ibatis.annotations.Param;
 
 public interface AppUserService {
 

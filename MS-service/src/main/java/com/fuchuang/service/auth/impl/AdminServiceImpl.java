@@ -11,8 +11,37 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private AdminDao adminDao;
+
+    /**
+     * 登录
+     * @param id
+     * @param password
+     * @return
+     */
     @Override
     public Admin getAdminbyIdPwd(String id, String password) {
         return adminDao.getAdminbyIdPwd(id,password);
     }
+
+    /**
+     * 查询用户
+     * @param
+     * @return
+     */
+    @Override
+    public Admin getAdminbyId(String id) {
+        return adminDao.getAdminbyId(id);
+    }
+
+    /**
+     * 修改密码
+     * @param newpass 新密码
+     * @return
+     */
+    @Override
+    public boolean modAdmin(String newpass) {
+        return adminDao.modAdmin(newpass);
+    }
+
+
 }
