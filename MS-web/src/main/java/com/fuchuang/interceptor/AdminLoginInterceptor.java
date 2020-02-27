@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 public class AdminLoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        if(request.getSession().getAttribute("login")!=null){
+        if(request.getSession().getAttribute("login")==null){
             //输出
-            response.getWriter().print("非法访问");
+            System.out.println("非法访问");
             return false;
         }
         else{

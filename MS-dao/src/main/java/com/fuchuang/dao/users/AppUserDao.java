@@ -1,6 +1,6 @@
-package com.fuchuang.dao.auth;
+package com.fuchuang.dao.users;
 
-import com.fuchuang.domain.auth.AppUser;
+import com.fuchuang.domain.users.AppUser;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -54,7 +54,7 @@ public interface AppUserDao {
      * @return
      */
     @Update("update appuser set passWord=#{passWord} where userId={userId}")
-    boolean changePasswordById(String userId);
+    boolean changePasswordById(String userid,String userId);
 
 
 }

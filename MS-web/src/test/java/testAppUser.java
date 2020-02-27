@@ -1,5 +1,4 @@
-import com.fuchuang.domain.auth.AppUser;
-import com.fuchuang.service.auth.AppUserService;
+import com.fuchuang.domain.users.AppUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

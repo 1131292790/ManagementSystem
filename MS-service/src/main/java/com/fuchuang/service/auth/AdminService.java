@@ -2,7 +2,6 @@ package com.fuchuang.service.auth;
 
 import com.fuchuang.domain.auth.Admin;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Service;
 
 public interface AdminService {
 
