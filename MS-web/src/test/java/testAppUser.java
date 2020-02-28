@@ -1,4 +1,5 @@
 import com.fuchuang.domain.users.AppUser;
+import com.fuchuang.service.users.AppUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,4 @@ public class testAppUser {
     @Autowired
     private AppUserService appUserService;
 
-    @Test
-    public void testfindUserbyId(){
-        AppUser app = appUserService.getUserbyId("1");
-        System.out.println(app);
-    }
 }

@@ -1,5 +1,7 @@
 package com.fuchuang.domain.users;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 import java.io.Serializable;
 
 public class  AppUser implements Serializable {

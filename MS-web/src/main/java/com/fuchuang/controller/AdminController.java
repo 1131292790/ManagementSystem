@@ -1,13 +1,16 @@
 package com.fuchuang.controller;
 
 import com.fuchuang.domain.auth.Admin;
+import com.fuchuang.domain.users.AppUser;
 import com.fuchuang.service.auth.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -23,13 +26,18 @@ public class AdminController {
      * @return
      */
     @RequestMapping(value = "/adminlogin",method = RequestMethod.POST)
-    public String adminLogin(String username,String password, HttpServletRequest request){
-        Admin admin = adminServiceImpl.getAdminbyIdPwd(username,password);
+    @ResponseBody
+    public Map<String, Object> adminLogin(@RequestBody Admin loginadmin, HttpServletRequest request){
+
+        Map<String,Object> map = new HashMap<String, Object>();
+        Admin admin = adminServiceImpl.getAdminbyIdPwd(loginadmin.getAdminId(),loginadmin.getPassWord());
         if(admin!=null){
             request.getSession().setAttribute("admin",admin);
-            return "redirect:/admin/admin_home.jsp";
+            map.put("success","success");
+            return map;
         }
-        return null;
+        map.put("success","fail");
+        return map;
     }
 
     /**
@@ -40,7 +48,7 @@ public class AdminController {
     @RequestMapping(value = "/adminlogout",method = RequestMethod.GET)
     public String adminLogout(HttpServletRequest request){
         request.getSession().removeAttribute("admin");
-        return "redirect:login.jsp";
+        return "redirect:/login.jsp";
     }
 
 
@@ -60,4 +68,25 @@ public class AdminController {
         return "fail";
     }
 
+
+    /************************页面跳转相关****************************************/
+
+    /**
+     * 进入管理员首页
+     * @return
+     */
+    @RequestMapping("/index")
+    String toIndex(){
+        return "admin/admin_home";
+    }
+
+
+    /**
+     * 返回登录页面
+     * @return
+     */
+    @RequestMapping("/login")
+    String toLogin(){
+        return "redirect:/login.jsp";
+    }
 }

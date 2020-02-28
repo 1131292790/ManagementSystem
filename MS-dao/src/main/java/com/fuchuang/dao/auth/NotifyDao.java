@@ -1,6 +1,9 @@
 package com.fuchuang.dao.auth;
 
 import com.fuchuang.domain.adv.Notify;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -8,11 +11,14 @@ import java.util.List;
 @Repository
 public interface NotifyDao {
 
+    /**********************后台相关dao*************************************/
+    
     /**
      * 查询通知
      * @param id
      * @return
      */
+    @Select("select * from notify where notifyId = #{id}")
     Notify findById(int id);
 
     /**
@@ -20,6 +26,7 @@ public interface NotifyDao {
      * @param id
      * @return
      */
+    @Delete("delete from notify where notifyId=#{id}")
     Notify delById(int id);
 
     /**
@@ -27,26 +34,33 @@ public interface NotifyDao {
      * @param notify
      * @return
      */
+    @Insert("insert into notify values(#{notifyId},#{title},#{content},#{type},#{sendTime},#{fromAdmin})")
     Notify createNotify(Notify notify);
-
-    /**
-     * 查找用户所有通知
-     * @param uid
-     * @return
-     */
-    List<Notify> findAllByUid(String uid);
 
     /**
      * 查询所有通知
      * @return
      */
+    @Select("select * from notify")
     List<Notify> findAll();
+
 
     /**
      * 修改通知
      * @param notify
      * @return
      */
+    //TODO 条件sql
     Notify updateNotify(Notify notify);
 
+    /**********************用户相关dao*************************************/
+    /**
+     * 根据用户id查询所有的通知
+     * @param userid
+     * @return
+     */
+    @Select("SELECT t3.* FROM appuser t1 INNER JOIN\n" +
+            "notifyuser t2 ON t2.`uId`=t1.`userId` INNER JOIN\n" +
+            "notify t3 ON t2.`nId`=t3.`notifyId`")
+    List<Notify> findAllByUserId(String userid);
 }

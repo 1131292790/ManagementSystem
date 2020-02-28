@@ -26,8 +26,19 @@
 
     <!--视图解析器-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/" />
+        <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
+
+    <!--拦截器映射-->
+    <mvc:interceptors>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <!--放行静态资源-->
+            <mvc:exclude-mapping path="/static/**"/>
+            <bean class="com.fuchuang.interceptor.AdminLoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

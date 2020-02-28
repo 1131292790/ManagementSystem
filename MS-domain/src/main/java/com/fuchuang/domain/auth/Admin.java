@@ -1,10 +1,14 @@
 package com.fuchuang.domain.auth;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 import java.io.Serializable;
 
 public class Admin implements Serializable {
     private static final long serialVersionUID = -2504386562473022400L;
+    @JsonAlias("username")
     private String adminId;
+    @JsonAlias("password")
     private String passWord;
     private String realName;
     private String phoneNum;

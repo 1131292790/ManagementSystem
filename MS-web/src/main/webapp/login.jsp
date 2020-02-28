@@ -24,7 +24,7 @@
 <h1>${requestScope.msg}</h1>
 <div class="layui-container">
     <div class="admin-login-background">
-        <form id="login_form" action="/admin/adminlogin" method="post" class="layui-form login-form">
+        <form id="login_form" class="layui-form login-form">
             <div class="layui-form">
                 <div class="layui-form-item logo-title">
                     <h1>App后台登录</h1>
@@ -48,7 +48,7 @@
                     <input type="checkbox" name="rememberMe" value="true" lay-skin="primary" title="记住密码">
                 </div>
                 <div class="layui-form-item">
-                    <button id="do_login" class="layui-btn layui-btn-fluid layui-bg-blue" lay-submit="" lay-filter="login_submit">登 录</button>
+                    <button type="button" class="layui-btn layui-btn-fluid layui-bg-blue" lay-submit="" lay-filter="do_login" >登 录</button>
                 </div>
             </div>
         </form>
@@ -59,8 +59,35 @@
     layui.use(['form','layer'], function () {
         var form = layui.form;
         var layer = layui.layer;
-    });
 
+        form.on('submit(do_login)',function () {
+            var param = {username:$("#username").val(),password:$("#password").val()};
+            $.ajax({
+                type: "POST",
+                url: "/admin/adminlogin",
+                data: JSON.stringify(param),
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                error: function (data) {
+                    console.log("error");
+
+                },
+                success: function (data) {
+                    if(data.success=="success"){
+                        layer.msg("登陆成功！",{icon:1,anim:2,time:1500},function(){
+                            //交给controller跳转
+                            window.location.href="/admin/index";
+                        });
+                    }else{
+                        layer.msg("登陆失败！请检查用户名和密码后重试！",{icon:5,anim:6,time:2000});
+                    }
+                }
+
+            });
+        });
+
+
+    });
 
 </script>
 </body>
