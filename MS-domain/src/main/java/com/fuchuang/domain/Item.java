@@ -1,4 +1,4 @@
-package com.fuchuang.domain.shop;
+package com.fuchuang.domain;
 
 import java.io.Serializable;
 

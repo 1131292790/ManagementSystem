@@ -30,6 +30,9 @@ CREATE TABLE `admin` (
 
 /*Data for the table `admin` */
 
+insert  into `admin`(`adminId`,`passWord`,`realName`,`phoneNum`) values 
+('admin','admin','管理员1','119');
+
 /*Table structure for table `appuser` */
 
 DROP TABLE IF EXISTS `appuser`;
@@ -114,6 +117,47 @@ CREATE TABLE `logging` (
 
 /*Data for the table `logging` */
 
+/*Table structure for table `notify` */
+
+DROP TABLE IF EXISTS `notify`;
+
+CREATE TABLE `notify` (
+  `notifyId` int(30) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) DEFAULT NULL,
+  `content` varchar(100) DEFAULT NULL,
+  `type` int(10) DEFAULT NULL,
+  `sendTime` date DEFAULT NULL,
+  `fromAdmin` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`notifyId`),
+  KEY `fromAdmin` (`fromAdmin`),
+  CONSTRAINT `notify_ibfk_1` FOREIGN KEY (`fromAdmin`) REFERENCES `admin` (`adminId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+/*Data for the table `notify` */
+
+insert  into `notify`(`notifyId`,`title`,`content`,`type`,`sendTime`,`fromAdmin`) values 
+(1,'1','1',1,'2020-02-27','admin');
+
+/*Table structure for table `notifyuser` */
+
+DROP TABLE IF EXISTS `notifyuser`;
+
+CREATE TABLE `notifyuser` (
+  `id` int(20) unsigned NOT NULL AUTO_INCREMENT,
+  `uId` varchar(15) DEFAULT NULL,
+  `nId` int(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `uId` (`uId`),
+  KEY `nId` (`nId`),
+  CONSTRAINT `notifyuser_ibfk_2` FOREIGN KEY (`nId`) REFERENCES `notify` (`notifyId`),
+  CONSTRAINT `notifyuser_ibfk_1` FOREIGN KEY (`uId`) REFERENCES `appuser` (`userId`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+/*Data for the table `notifyuser` */
+
+insert  into `notifyuser`(`id`,`uId`,`nId`) values 
+(1,'1',1);
+
 /*Table structure for table `order` */
 
 DROP TABLE IF EXISTS `order`;
@@ -127,8 +171,8 @@ CREATE TABLE `order` (
   PRIMARY KEY (`orderId`),
   KEY `itemId` (`itemId`),
   KEY `userId` (`userId`),
-  CONSTRAINT `order_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `appuser` (`userId`) ON UPDATE CASCADE,
-  CONSTRAINT `order_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `item` (`itemId`)
+  CONSTRAINT `order_ibfk_1` FOREIGN KEY (`itemId`) REFERENCES `item` (`itemId`),
+  CONSTRAINT `order_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `appuser` (`userId`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `order` */

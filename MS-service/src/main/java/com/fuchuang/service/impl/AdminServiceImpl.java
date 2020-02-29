@@ -1,8 +1,8 @@
-package com.fuchuang.service.auth.impl;
+package com.fuchuang.service.impl;
 
-import com.fuchuang.dao.auth.AdminDao;
-import com.fuchuang.domain.auth.Admin;
-import com.fuchuang.service.auth.AdminService;
+import com.fuchuang.dao.AdminDao;
+import com.fuchuang.domain.Admin;
+import com.fuchuang.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

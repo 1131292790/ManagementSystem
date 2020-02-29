@@ -1,6 +1,6 @@
-package com.fuchuang.dao.auth;
+package com.fuchuang.dao;
 
-import com.fuchuang.domain.adv.Notify;
+import com.fuchuang.domain.Notify;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface NotifyDao {
 
-    /**********************后台相关dao*************************************/
+    //**********************后台相关dao*************************************/
     
     /**
      * 查询通知
@@ -19,7 +19,7 @@ public interface NotifyDao {
      * @return
      */
     @Select("select * from notify where notifyId = #{id}")
-    Notify findById(int id);
+    Notify findById(String id);
 
     /**
      * 删除通知
@@ -27,7 +27,7 @@ public interface NotifyDao {
      * @return
      */
     @Delete("delete from notify where notifyId=#{id}")
-    Notify delById(int id);
+    Notify delById(String id);
 
     /**
      * 新建通知
@@ -45,13 +45,6 @@ public interface NotifyDao {
     List<Notify> findAll();
 
 
-    /**
-     * 修改通知
-     * @param notify
-     * @return
-     */
-    //TODO 条件sql
-    Notify updateNotify(Notify notify);
 
     /**********************用户相关dao*************************************/
     /**
@@ -63,4 +56,7 @@ public interface NotifyDao {
             "notifyuser t2 ON t2.`uId`=t1.`userId` INNER JOIN\n" +
             "notify t3 ON t2.`nId`=t3.`notifyId`")
     List<Notify> findAllByUserId(String userid);
+
+
+
 }

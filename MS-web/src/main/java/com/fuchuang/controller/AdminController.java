@@ -1,16 +1,13 @@
 package com.fuchuang.controller;
 
-import com.fuchuang.domain.auth.Admin;
-import com.fuchuang.domain.users.AppUser;
-import com.fuchuang.service.auth.AdminService;
+import com.fuchuang.domain.Admin;
+import com.fuchuang.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -29,7 +26,7 @@ public class AdminController {
     @ResponseBody
     public Map<String, Object> adminLogin(@RequestBody Admin loginadmin, HttpServletRequest request){
 
-        Map<String,Object> map = new HashMap<String, Object>();
+        Map<String,Object> map = new HashMap<>();
         Admin admin = adminServiceImpl.getAdminbyIdPwd(loginadmin.getAdminId(),loginadmin.getPassWord());
         if(admin!=null){
             request.getSession().setAttribute("admin",admin);
@@ -69,7 +66,7 @@ public class AdminController {
     }
 
 
-    /************************页面跳转相关****************************************/
+    //***********************页面跳转相关****************************************/
 
     /**
      * 进入管理员首页

@@ -1,4 +1,4 @@
-package com.fuchuang.dao.shop;
+package com.fuchuang.dao;
 
 public interface OrderDao {
 }

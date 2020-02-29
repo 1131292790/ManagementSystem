@@ -1,4 +1,4 @@
-package com.fuchuang.domain.adv;
+package com.fuchuang.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -7,27 +7,27 @@ public class Notify implements Serializable {
 
     private static final long serialVersionUID = 8621273596494218482L;
 
-    private int notifyId;
-    private String title;
+    private String notifyId;
+    private String notifyTitle;
     private String content;
-    private int type;
+    private int notifyType;
     private Date sendTime;
     private String fromAdmin;
 
-    public int getNotifyId() {
+    public String getNotifyId() {
         return notifyId;
     }
 
-    public void setNotifyId(int notifyId) {
+    public void setNotifyId(String notifyId) {
         this.notifyId = notifyId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getNotifyTitle() {
+        return notifyTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNotifyTitle(String notifyTitle) {
+        this.notifyTitle = notifyTitle;
     }
 
     public String getContent() {
@@ -38,12 +38,12 @@ public class Notify implements Serializable {
         this.content = content;
     }
 
-    public int getType() {
-        return type;
+    public int getNotifyType() {
+        return notifyType;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public void setNotifyType(int notifyType) {
+        this.notifyType = notifyType;
     }
 
     public Date getSendTime() {
@@ -66,9 +66,9 @@ public class Notify implements Serializable {
     public String toString() {
         return "Notify{" +
                 "notifyId=" + notifyId +
-                ", title='" + title + '\'' +
+                ", title='" + notifyTitle + '\'' +
                 ", content='" + content + '\'' +
-                ", type=" + type +
+                ", type=" + notifyType +
                 ", sendTime=" + sendTime +
                 ", fromAdmin='" + fromAdmin + '\'' +
                 '}';

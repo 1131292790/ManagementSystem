@@ -1,4 +1,4 @@
-package com.fuchuang.domain.users;
+package com.fuchuang.domain;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 

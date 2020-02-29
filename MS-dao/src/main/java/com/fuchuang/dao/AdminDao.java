@@ -1,6 +1,6 @@
-package com.fuchuang.dao.auth;
+package com.fuchuang.dao;
 
-import com.fuchuang.domain.auth.Admin;
+import com.fuchuang.domain.Admin;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;

@@ -1,6 +1,6 @@
-package com.fuchuang.service.auth;
+package com.fuchuang.service;
 
-import com.fuchuang.domain.auth.Admin;
+import com.fuchuang.domain.Admin;
 import org.apache.ibatis.annotations.Param;
 
 public interface AdminService {

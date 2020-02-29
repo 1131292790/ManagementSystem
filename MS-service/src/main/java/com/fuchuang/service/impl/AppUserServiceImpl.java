@@ -1,8 +1,8 @@
-package com.fuchuang.service.users.Impl;
+package com.fuchuang.service.impl;
 
-import com.fuchuang.dao.users.AppUserDao;
-import com.fuchuang.domain.users.AppUser;
-import com.fuchuang.service.users.AppUserService;
+import com.fuchuang.dao.AppUserDao;
+import com.fuchuang.domain.AppUser;
+import com.fuchuang.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,10 +34,7 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUser doLogin(String username,String password) {
         AppUser user = appUserDao.findUserbyIdPwd(username, password);
-        if(user!=null){
-            return user;
-        }
-        return null;
+        return user;
     }
 
     /**

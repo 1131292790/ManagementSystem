@@ -1,8 +1,10 @@
-package com.fuchuang.dao.users;
+package com.fuchuang.dao;
 
-import com.fuchuang.domain.users.AppUser;
+import com.fuchuang.domain.AppUser;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface AppUserDao {
@@ -14,6 +16,9 @@ public interface AppUserDao {
      */
     @Select("select * from appuser where userId=#{id}")
     AppUser findUserbyId(String id);
+
+    @Select("select * from appuser")
+    List<AppUser> findAllUsers();
 
     /**
      * 根据账号密码查询

@@ -1,6 +1,5 @@
 package com.fuchuang.interceptor;
 
-import com.fuchuang.domain.auth.Admin;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;

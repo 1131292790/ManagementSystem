@@ -1,6 +1,6 @@
-package com.fuchuang.service.users;
+package com.fuchuang.service;
 
-import com.fuchuang.domain.users.AppUser;
+import com.fuchuang.domain.AppUser;
 public interface AppUserService {
 
     /**
